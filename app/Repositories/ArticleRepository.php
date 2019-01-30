@@ -12,5 +12,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface ArticleRepository extends RepositoryInterface
 {
-    public function search($query = "");
+    public function search($params = []);
 }

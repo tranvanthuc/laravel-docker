@@ -24,7 +24,7 @@ class ArticleController extends Controller
      */
     public function list(Request $request)
     {
-        $articles = $this->articleRepo->search($request->get('q'));
+        $articles = $this->articleRepo->search($request->all());
         $view = view('articles.list', compact('articles'))->render();
         return response()->json($view);
     }

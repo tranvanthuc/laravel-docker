@@ -18,6 +18,7 @@ use Prettus\Repository\Traits\CacheableRepository;
 class ArticleRepositoryEloquent extends BaseRepository implements ArticleRepository, CacheableInterface
 {
     use CacheableRepository;
+
     /**
      * Specify Model class name
      *
@@ -38,8 +39,9 @@ class ArticleRepositoryEloquent extends BaseRepository implements ArticleReposit
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
-    public function search($query = "")
+    public function search($params = [])
     {
+        $query = $params['query'];
         return $this->model->where('body', 'like', "%{$query}%")
             ->orWhere('title', 'like', "%{$query}%")
             ->get();

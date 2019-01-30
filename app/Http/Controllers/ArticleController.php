@@ -23,9 +23,9 @@ class ArticleController extends Controller
         return view('articles.index', compact('articles'));
     }
 
-    public function search(Request $request)
+    public function search()
     {
-        $articles = $this->articleRepo->search($request->get('q'));
+        $articles = $this->articleRepo->search();
         return view('articles.index', compact('articles'));
     }
 

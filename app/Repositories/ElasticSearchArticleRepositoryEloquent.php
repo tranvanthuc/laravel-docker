@@ -17,15 +17,27 @@ class ElasticSearchArticleRepositoryEloquent extends BaseRepository implements A
         $this->search = app(Client::class);
     }
 
-    public function search($query = "")
+    /**
+     * @param $params
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function search($params = [])
     {
-        $items = $this->searchOnElasticSearch($query);
-
+        $items = $this->searchOnElasticSearch($params);
         return $this->buildCollection($items);
     }
 
-    private function searchOnElasticSearch($query)
+    /**
+     * @param $params
+     * @return array
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    private function searchOnElasticSearch($params)
     {
+        $query = $params['query'] ?? "";
+        $size  = $params['size'] ?? 10;
+        $from  = $params['from'] ?? 0;
         if (empty($query)) {
             $body = [
                 'query' => [
@@ -38,7 +50,7 @@ class ElasticSearchArticleRepositoryEloquent extends BaseRepository implements A
                     'multi_match' => [
                         "operator" => "and",
                         "type"     => "phrase_prefix",
-                        'fields'   => ['title', 'body', 'tags^3', 'user.name', 'user.email'],
+                        'fields'   => ['title^3', 'body', 'tags', 'user.name', 'user.email'],
                         'query'    => $query,
                     ],
                 ],
@@ -51,10 +63,10 @@ class ElasticSearchArticleRepositoryEloquent extends BaseRepository implements A
             ]
         ];
         $items        = $this->search->search([
-            'size'  => 1000,
-            'from'  => 0,
-            'index' => $this->model->getSearchIndex(),
-            'type'  => $this->model->getSearchType(),
+            'size'  => $size,
+            'from'  => $from,
+            'index' => $this->makeModel()->getSearchIndex(),
+            'type'  => $this->makeModel()->getSearchType(),
             'body'  => $body,
 
 
