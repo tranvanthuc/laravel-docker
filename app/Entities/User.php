@@ -61,4 +61,10 @@ class User extends Authenticatable
     {
         return (boolean) $this->follows()->where('follows_id', $userId)->first();
     }
+
+    public function notifications()
+    {
+        $data =  $this->unreadNotifications()->limit(5)->get();
+        return $data;
+    }
 }

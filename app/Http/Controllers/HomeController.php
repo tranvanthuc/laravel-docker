@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessagePosted;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $message = "Hello";
+        event(new MessagePosted(\Auth::user(), $message));
         return view('home');
     }
 }

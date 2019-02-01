@@ -46494,6 +46494,7 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _article__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./article */ "./resources/js/article.js");
+/* harmony import */ var _notice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notice */ "./resources/js/notice.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -46520,6 +46521,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 // const app = new Vue({
 //     el: '#app'
 // });
+
 
 
 
@@ -46718,6 +46720,78 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   encrypted: true
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./resources/js/notice.js":
+/*!********************************!*\
+  !*** ./resources/js/notice.js ***!
+  \********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Notice =
+/*#__PURE__*/
+function () {
+  function Notice() {
+    _classCallCheck(this, Notice);
+
+    this.config();
+    this.listen();
+  }
+
+  _createClass(Notice, [{
+    key: "config",
+    value: function config() {
+      this.btn = $('#btn-js');
+    }
+  }, {
+    key: "listen",
+    value: function listen() {
+      this.btn.on('click', function () {
+        window.axios({
+          method: "get",
+          url: location.origin + "/messages"
+        }).then(function (res) {
+          return console.log(res);
+        });
+      });
+      console.log("notice");
+
+      if (!window.Echo) {
+        window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+        window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
+          broadcaster: 'pusher',
+          key: "0ad8ccb1e48312c60d4a",
+          cluster: "ap1",
+          encrypted: true
+        });
+      }
+
+      console.log("ASdasd");
+      window.Echo.channel('messages').listen('.newMessage', function (message) {
+        console.log(message);
+      });
+      console.log("Fuck csadkasdkasd");
+    }
+  }]);
+
+  return Notice;
+}();
+
+new Notice();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
