@@ -1,5 +1,4 @@
 window._ = require('lodash');
-import Echo from "laravel-echo"
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -13,16 +12,6 @@ try {
 
   require('bootstrap');
 
-  let notifications = [];
-
-  const NOTIFICATION_TYPES = {
-    follow: 'App\\Notifications\\UserFollowed'
-  };
-
-  window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: process.env.PUSHER_APP_KEY
-  });
 } catch (e) {
 }
 

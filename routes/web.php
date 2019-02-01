@@ -24,3 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
     Route::get('/notifications', 'UsersController@notifications');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 class Article {
   constructor() {
-    this.axios = axios;
     this.config();
     this.listen();
     this.size = 10;
