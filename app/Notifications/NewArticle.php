@@ -13,19 +13,19 @@ class NewArticle extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $following;
+    protected $user;
 
     protected $article;
 
     /**
      * Create a new notification instance.
      *
-     * @param User $following
      * @param Article $article
+     * @param User $user
      */
-    public function __construct(User $following, Article $article)
+    public function __construct( Article $article, User $user)
     {
-        $this->following = $following;
+        $this->user = $user;
         $this->article   = $article;
     }
 
@@ -63,13 +63,9 @@ class NewArticle extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'id'      => $this->id,
-            'read_at' => null,
-            'data'    => [
-                'following_id'   => $this->following->id,
-                'following_name' => $this->following->name,
-                'post_id'        => $this->post->id,
-            ],
+            'user_id' => $this->user->id,
+            'user_name' => $this->user->name,
+            'article' => $this->article->title,
         ];
     }
 }

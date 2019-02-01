@@ -1,18 +1,24 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Entities\User;
 use App\Notifications\UserFollowed;
-
+use App\Repositories\UserRepository;
+use Auth;
 class UsersController extends Controller
 {
+    protected $userRepo;
+
+    public function __construct()
+    {
+        $this->userRepo = app(UserRepository::class);
+    }
     public function index()
     {
-        $users = User::where('id', '!=', auth()->user()->id)->get();
+        $users = $this->userRepo->findWhere([
+            ['id' , '!=', Auth::id()]
+        ])->sortByDesc('id');
         return view('users.index', compact('users'));
     }
-
     /**
      * @param User $user
      * @return mixed
@@ -26,15 +32,12 @@ class UsersController extends Controller
         }
         if (!$follower->isFollowing($user->id)) {
             $follower->follow($user->id);
-
             // sending a notification
             $user->notify(new UserFollowed($follower));
-
             return back()->withSuccess("You are now friends with {$user->name}");
         }
         return back()->withError("You are already following {$user->name}");
     }
-
     public function unfollow(User $user)
     {
         $follower = auth()->user();
@@ -44,7 +47,6 @@ class UsersController extends Controller
         }
         return back()->withError("You are not following {$user->name}");
     }
-
     public function notifications()
     {
         return auth()->user()->unreadNotifications()->limit(5)->get()->toArray();

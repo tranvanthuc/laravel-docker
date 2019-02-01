@@ -33,18 +33,3 @@ require('./bootstrap');
 // });
 import "./article"
 
-$(document).ready(function() {
-  // check if there's a logged in user
-  if(Laravel.userId) {
-    $.get('/notifications', function (data) {
-      addNotifications(data, "#notifications");
-    });
-  }
-});
-
-function addNotifications(newNotifications, target) {
-  notifications = _.concat(notifications, newNotifications);
-  // show only last 5 notifications
-  notifications.slice(0, 5);
-  showNotifications(notifications, target);
-}
