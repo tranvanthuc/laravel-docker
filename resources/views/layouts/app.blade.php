@@ -18,15 +18,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
+            @if(!auth()->guest())
+                <input type="hidden" id="user-id" value={{auth()->id()}}>
+            @endif
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -49,8 +57,10 @@
                             </li>
                         @endif
                     @else
+
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -61,10 +71,28 @@
                                     {{ __('Logout') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="notifications" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Notifications {{ auth()->user()->unreadNotifications()->count() }} <span
+                                        class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="notificationsMenu" id="notificationsMenu">
+                                @if (auth()->user()->unreadNotifications()->count())
+                                    @foreach(auth()->user()->unreadNotifications as $notification)
+                                        <li class="dropdown-header"><a href="#">{{$notification['data']['data']['follower_name']}}</a></li>
+                                    @endforeach
+                                @else
+                                    <li class="dropdown-header">No notifications</li>
+                                @endif
+                            </ul>
                         </li>
                     @endguest
                 </ul>

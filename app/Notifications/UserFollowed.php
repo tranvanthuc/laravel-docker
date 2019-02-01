@@ -66,4 +66,6 @@ class UserFollowed extends Notification implements ShouldQueue
             ],
         ];
     }
+
+
 }

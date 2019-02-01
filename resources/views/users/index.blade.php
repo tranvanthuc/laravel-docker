@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('layouts.app')
 
 @section('head')
     <script>
@@ -36,7 +36,7 @@
                         <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td clphpass="table-text">
+                                <td class="table-text">
                                     <div>{{ $user->name }}</div>
                                 </td>
                                 @if (auth()->user()->isFollowing($user->id))

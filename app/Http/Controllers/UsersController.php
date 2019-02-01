@@ -4,12 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Entities\User;
 use App\Notifications\UserFollowed;
+use App\Repositories\UserRepository;
+use Auth;
 
 class UsersController extends Controller
 {
+    protected $userRepo;
+    
+    public function __construct()
+    {
+        $this->userRepo = app(UserRepository::class);
+    }
+
     public function index()
     {
-        $users = User::where('id', '!=', auth()->user()->id)->get();
+        $users = $this->userRepo->findWhere([
+            ['id' , '!=', Auth::id()]
+        ])->sortByDesc('id');
         return view('users.index', compact('users'));
     }
 

@@ -1,5 +1,4 @@
 window._ = require('lodash');
-import Echo from "laravel-echo"
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -13,16 +12,6 @@ try {
 
   require('bootstrap');
 
-  let notifications = [];
-
-  const NOTIFICATION_TYPES = {
-    follow: 'App\\Notifications\\UserFollowed'
-  };
-
-  window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: process.env.PUSHER_APP_KEY
-  });
 } catch (e) {
 }
 
@@ -56,13 +45,13 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo'
+import Echo from 'laravel-echo'
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    encrypted: true
+});

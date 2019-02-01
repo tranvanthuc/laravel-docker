@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Repositories\ArticleRepository;
 use App\Repositories\ArticleRepositoryEloquent;
 use App\Repositories\ElasticSearchArticleRepositoryEloquent;
+use App\Repositories\UserRepository;
+use App\Repositories\UserRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
@@ -42,6 +44,8 @@ class RepositoryProvider extends ServiceProvider
         });
 
         $this->bindSearchClient();
+        // bind repository
+        $this->app->singleton(UserRepository::class, UserRepositoryEloquent::class);
     }
 
     private function bindSearchClient()

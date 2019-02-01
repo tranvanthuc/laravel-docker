@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-01-30 13:56:29.
+    * Generated on 2019-02-01 04:01:56.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13,6 +13,8 @@ namespace PHPSTORM_META {
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
         'App\Repositories\ArticleRepository' => \App\Repositories\ElasticSearchArticleRepositoryEloquent::class,
+        'App\Repositories\UserRepository' => \App\Repositories\UserRepositoryEloquent::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Elasticsearch\Client' => \Elasticsearch\Client::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
@@ -53,6 +55,7 @@ namespace PHPSTORM_META {
         'command.config.clear' => \Illuminate\Foundation\Console\ConfigClearCommand::class,
         'command.console.make' => \Illuminate\Foundation\Console\ConsoleMakeCommand::class,
         'command.controller.make' => \Illuminate\Routing\Console\ControllerMakeCommand::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'command.down' => \Illuminate\Foundation\Console\DownCommand::class,
         'command.dumpserver' => \BeyondCode\DumpServer\DumpServerCommand::class,
         'command.environment' => \Illuminate\Foundation\Console\EnvironmentCommand::class,
@@ -155,6 +158,8 @@ namespace PHPSTORM_META {
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
         'App\Repositories\ArticleRepository' => \App\Repositories\ElasticSearchArticleRepositoryEloquent::class,
+        'App\Repositories\UserRepository' => \App\Repositories\UserRepositoryEloquent::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Elasticsearch\Client' => \Elasticsearch\Client::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
@@ -195,6 +200,7 @@ namespace PHPSTORM_META {
         'command.config.clear' => \Illuminate\Foundation\Console\ConfigClearCommand::class,
         'command.console.make' => \Illuminate\Foundation\Console\ConsoleMakeCommand::class,
         'command.controller.make' => \Illuminate\Routing\Console\ControllerMakeCommand::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'command.down' => \Illuminate\Foundation\Console\DownCommand::class,
         'command.dumpserver' => \BeyondCode\DumpServer\DumpServerCommand::class,
         'command.environment' => \Illuminate\Foundation\Console\EnvironmentCommand::class,
@@ -297,6 +303,8 @@ namespace PHPSTORM_META {
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
         'App\Repositories\ArticleRepository' => \App\Repositories\ElasticSearchArticleRepositoryEloquent::class,
+        'App\Repositories\UserRepository' => \App\Repositories\UserRepositoryEloquent::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Elasticsearch\Client' => \Elasticsearch\Client::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
@@ -337,6 +345,7 @@ namespace PHPSTORM_META {
         'command.config.clear' => \Illuminate\Foundation\Console\ConfigClearCommand::class,
         'command.console.make' => \Illuminate\Foundation\Console\ConsoleMakeCommand::class,
         'command.controller.make' => \Illuminate\Routing\Console\ControllerMakeCommand::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'command.down' => \Illuminate\Foundation\Console\DownCommand::class,
         'command.dumpserver' => \BeyondCode\DumpServer\DumpServerCommand::class,
         'command.environment' => \Illuminate\Foundation\Console\EnvironmentCommand::class,
@@ -439,6 +448,8 @@ namespace PHPSTORM_META {
     override(\App::make(0), map([
         '' => '@',
         'App\Repositories\ArticleRepository' => \App\Repositories\ElasticSearchArticleRepositoryEloquent::class,
+        'App\Repositories\UserRepository' => \App\Repositories\UserRepositoryEloquent::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Elasticsearch\Client' => \Elasticsearch\Client::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
@@ -479,6 +490,7 @@ namespace PHPSTORM_META {
         'command.config.clear' => \Illuminate\Foundation\Console\ConfigClearCommand::class,
         'command.console.make' => \Illuminate\Foundation\Console\ConsoleMakeCommand::class,
         'command.controller.make' => \Illuminate\Routing\Console\ControllerMakeCommand::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'command.down' => \Illuminate\Foundation\Console\DownCommand::class,
         'command.dumpserver' => \BeyondCode\DumpServer\DumpServerCommand::class,
         'command.environment' => \Illuminate\Foundation\Console\EnvironmentCommand::class,
@@ -581,6 +593,8 @@ namespace PHPSTORM_META {
     override(\App::makeWith(0), map([
         '' => '@',
         'App\Repositories\ArticleRepository' => \App\Repositories\ElasticSearchArticleRepositoryEloquent::class,
+        'App\Repositories\UserRepository' => \App\Repositories\UserRepositoryEloquent::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Elasticsearch\Client' => \Elasticsearch\Client::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
@@ -621,6 +635,7 @@ namespace PHPSTORM_META {
         'command.config.clear' => \Illuminate\Foundation\Console\ConfigClearCommand::class,
         'command.console.make' => \Illuminate\Foundation\Console\ConsoleMakeCommand::class,
         'command.controller.make' => \Illuminate\Routing\Console\ControllerMakeCommand::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'command.down' => \Illuminate\Foundation\Console\DownCommand::class,
         'command.dumpserver' => \BeyondCode\DumpServer\DumpServerCommand::class,
         'command.environment' => \Illuminate\Foundation\Console\EnvironmentCommand::class,
@@ -723,6 +738,8 @@ namespace PHPSTORM_META {
     override(\app(0), map([
         '' => '@',
         'App\Repositories\ArticleRepository' => \App\Repositories\ElasticSearchArticleRepositoryEloquent::class,
+        'App\Repositories\UserRepository' => \App\Repositories\UserRepositoryEloquent::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Elasticsearch\Client' => \Elasticsearch\Client::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
@@ -763,6 +780,7 @@ namespace PHPSTORM_META {
         'command.config.clear' => \Illuminate\Foundation\Console\ConfigClearCommand::class,
         'command.console.make' => \Illuminate\Foundation\Console\ConsoleMakeCommand::class,
         'command.controller.make' => \Illuminate\Routing\Console\ControllerMakeCommand::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'command.down' => \Illuminate\Foundation\Console\DownCommand::class,
         'command.dumpserver' => \BeyondCode\DumpServer\DumpServerCommand::class,
         'command.environment' => \Illuminate\Foundation\Console\EnvironmentCommand::class,
@@ -865,6 +883,8 @@ namespace PHPSTORM_META {
     override(\resolve(0), map([
         '' => '@',
         'App\Repositories\ArticleRepository' => \App\Repositories\ElasticSearchArticleRepositoryEloquent::class,
+        'App\Repositories\UserRepository' => \App\Repositories\UserRepositoryEloquent::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Elasticsearch\Client' => \Elasticsearch\Client::class,
         'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
         'Illuminate\Bus\Dispatcher' => \Illuminate\Bus\Dispatcher::class,
@@ -905,6 +925,7 @@ namespace PHPSTORM_META {
         'command.config.clear' => \Illuminate\Foundation\Console\ConfigClearCommand::class,
         'command.console.make' => \Illuminate\Foundation\Console\ConsoleMakeCommand::class,
         'command.controller.make' => \Illuminate\Routing\Console\ControllerMakeCommand::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'command.down' => \Illuminate\Foundation\Console\DownCommand::class,
         'command.dumpserver' => \BeyondCode\DumpServer\DumpServerCommand::class,
         'command.environment' => \Illuminate\Foundation\Console\EnvironmentCommand::class,
