@@ -23,10 +23,10 @@ class NewArticle extends Notification implements ShouldQueue
      * @param Article $article
      * @param User $user
      */
-    public function __construct( Article $article, User $user)
+    public function __construct(Article $article, User $user)
     {
-        $this->user = $user;
-        $this->article   = $article;
+        $this->user    = $user;
+        $this->article = $article;
     }
 
     /**
@@ -37,7 +37,7 @@ class NewArticle extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database', 'broadcast'];
+        return ['database'];
     }
 
     /**
@@ -62,10 +62,13 @@ class NewArticle extends Notification implements ShouldQueue
      */
     public function toArray($notifiable)
     {
-        return [
-            'user_id' => $this->user->id,
+
+        $data = [
+            'user_id'   => $this->user->id,
             'user_name' => $this->user->name,
-            'article' => $this->article->title,
+            'article'   => $this->article->title,
         ];
+
+        dd($data);
     }
 }

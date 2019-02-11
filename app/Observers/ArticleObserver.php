@@ -11,9 +11,7 @@ class ArticleObserver
     public function created(Article $article)
     {
         $author = $article->user;
-        $users  = User::all();
-        foreach ($users as $user) {
-            $user->notify(new NewArticle($article, $author));
-        }
+        $user  = User::first();
+        $user->notify(new NewArticle($article, $author));
     }
 }

@@ -41,7 +41,7 @@ class ArticleController extends Controller
     public function postCreate(Request $request)
     {
         $params            = $request->all();
-        $params['user_id'] = 1;
+        $params['user_id'] = auth()->id();
         $params['tags']    = explode(",", $request->input('tags'));
         $article           = $this->articleRepo->create($params);
         return redirect()->route('edit.get', ['id' => $article->id]);

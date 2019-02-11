@@ -16,7 +16,8 @@ class MessageController extends Controller
     {
         $message =" abc";
         if (Auth::check()) {
-            event(new MessagePosted(Auth::user(), $message));
+//            event(new MessagePosted(Auth::user(), $message));
+
         }
         return "true";
     }

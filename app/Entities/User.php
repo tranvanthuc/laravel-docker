@@ -16,7 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -25,7 +27,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     public function articles()
@@ -39,16 +42,16 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
-    public function follows()
-    {
-        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follows_id')
-            ->withTimestamps();
-    }
-
     public function follow($userId)
     {
         $this->follows()->attach($userId);
         return $this;
+    }
+
+    public function follows()
+    {
+        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follows_id')
+            ->withTimestamps();
     }
 
     public function unfollow($userId)
@@ -59,12 +62,12 @@ class User extends Authenticatable
 
     public function isFollowing($userId)
     {
-        return (boolean) $this->follows()->where('follows_id', $userId)->first();
+        return (boolean)$this->follows()->where('follows_id', $userId)->first();
     }
 
     public function notifications()
     {
-        $data =  $this->unreadNotifications()->limit(5)->get();
+        $data = $this->unreadNotifications()->limit(5)->get();
         return $data;
     }
 }
