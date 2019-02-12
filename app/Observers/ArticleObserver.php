@@ -10,8 +10,8 @@ class ArticleObserver
 {
     public function created(Article $article)
     {
-        $author = $article->user;
-        $user  = User::first();
-        $user->notify(new NewArticle($article, $author));
+//        $author = $article->user;
+//        $user  = User::first();
+//        $user->notify(new NewArticle($article, $author));
     }
 }

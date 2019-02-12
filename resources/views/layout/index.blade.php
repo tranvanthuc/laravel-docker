@@ -23,6 +23,14 @@
 </head>
 <body>
 <div id="app">
+    <input type="hidden" name="config"
+           id="config"
+           data-firebase-api-key="{{config('firebase.api_key')}}"
+           data-firebase-project-id="{{config('firebase.project_id')}}"
+           data-firebase-database-url="{{config('firebase.database_url')}}"
+           data-firebase-bucket="{{config('firebase.bucket')}}"
+           data-firebase-sender-id="{{config('firebase.sender_id')}}"
+    >
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">

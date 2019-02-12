@@ -33,3 +33,4 @@ require('./bootstrap');
 // });
 import "./article"
 import "./notice"
+import "./firebase"
