@@ -26,7 +26,6 @@ class Article {
         this.search(this.size);
         this.loadMore();
         this.handleOnScroll();
-        // this.newScroll();
     }
 
     upCount() {
@@ -37,24 +36,19 @@ class Article {
         this.count = 0;
     }
 
+    checkScrolledOnBottom() {
+        const scrollTop = $(window).scrollTop();
+        const documentHeight = $(document).height();
+        const windowHeight = $(window).height();
+        const offsetBottom = 400;
+        const scrolledToBottom =
+            scrollTop >= documentHeight - windowHeight - offsetBottom;
+        return scrolledToBottom;
+    }
+
     handleOnScroll() {
         const self = this;
         window.onscroll = function() {
-            let scrollTop =
-                (document.documentElement &&
-                    document.documentElement.scrollTop) ||
-                document.body.scrollTop;
-            let scrollHeight =
-                (document.documentElement &&
-                    document.documentElement.scrollHeight) ||
-                document.body.scrollHeight;
-            let clientHeight =
-                document.documentElement.clientHeight || window.innerHeight;
-            const offsetBottom = 400;
-            let scrolledToBottom =
-                Math.ceil(scrollTop + clientHeight) >=
-                scrollHeight - offsetBottom;
-
             const {
                 element: {
                     input: { search: inputSearch }
@@ -62,14 +56,12 @@ class Article {
             } = self;
             const value = inputSearch.val();
             // scroll load more
-            if (scrolledToBottom) {
+            if (self.checkScrolledOnBottom()) {
                 self.upCount();
                 if (self.count === 1) {
-                    console.log("call aPI");
                     self.size += 10;
                     self.fetchArticles(value, self.size);
                 }
-                console.log("count", self.count);
             }
         };
     }
