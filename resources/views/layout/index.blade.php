@@ -30,6 +30,7 @@
            data-firebase-database-url="{{config('firebase.database_url')}}"
            data-firebase-bucket="{{config('firebase.bucket')}}"
            data-firebase-sender-id="{{config('firebase.sender_id')}}"
+           data-firebase-public-key="{{config('firebase.public_key')}}"
     >
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
@@ -103,6 +104,7 @@
     <main class="py-4">
         @yield('content')
     </main>
+    @yield('bottom.js')
 </div>
 </body>
 </html>

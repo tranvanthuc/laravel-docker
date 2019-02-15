@@ -20,18 +20,30 @@ class TestController extends Controller
 
     public function index()
     {
-        $data = " true ";
-        //        $params = [
-        //            'user_id' => 2,
-        //            'message' => 'Test firebase '
-        //        ];
-        //
-                $this->firebaseService->create("notifications", $params);
+        $data   = " true ";
+        $params = [
+            'user_id' => 5,
+            'message' => 'Test firebase '
+        ];
 
-//                $data = $this->realtimeDB->getKeyValueByParent("notifications", ['user_id', 1]);
+        $data = $this->realtimeDB->create("notifications", $params);
+//        $key  = $data->getKey();
 
-//        $this->cloudMessaging->send("Hello");
+//        $value = $this->realtimeDB->db()->getReference('notifications')->getValue();
+//        dd($data->getKey());
+
+
+        //                $data = $this->realtimeDB->getKeyValueByParent("notifications", ['user_id', 1]);
+
+        //        $this->cloudMessaging->send("Hello");
 
         return $data;
+    }
+
+    public function realtime()
+    {
+        $value = $this->realtimeDB->db()->getReference('notifications')->getSnapshot();
+        dd($value->getValue());
+        return $value;
     }
 }

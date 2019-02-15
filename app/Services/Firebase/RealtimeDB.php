@@ -13,6 +13,9 @@ class RealtimeDB extends FirebaseService
         $this->db = $this->firebase->getDatabase();
     }
 
+    public function db() {
+        return $this->db;
+    }
 
     public function createThread($data)
     {
@@ -26,10 +29,11 @@ class RealtimeDB extends FirebaseService
     public function create($key = "default", $data = [])
     {
         try {
-            $this->db->getReference($key)->push($data);
+            return $this->db->getReference($key)->push($data);
         } catch (\Exception $exception) {
             Log::error('[Create]: ' . $exception);
         }
+        return null;
     }
 
     /**

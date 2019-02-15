@@ -6,11 +6,15 @@
             <div class="panel panel-primary">
                 <input type="text" placeholder="Search " id="search">
                 <button id="load-more">Load more</button>
-                <button id="btn-js">BTnsd</button>
+                <button id="btn-test">Button Test</button>
                 <div class="panel-body">
                     @include('articles.list')
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('bottom.js')
+    <script src="{{mix('js/firebase.js')}}"></script>
 @endsection

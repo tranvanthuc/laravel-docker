@@ -22,6 +22,6 @@ mix.autoload({
 });
 
 mix.js('resources/js/app.js', 'public/js')
-// mix.js('resources/js/article.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+  .js('resources/js/firebase.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css');
 

@@ -76,5 +76,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('bottom.js')
 </body>
 </html>

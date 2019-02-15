@@ -29,6 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 Auth::routes();
 
-Route::get('/test', 'TestController@index');
+Route::prefix('/test')->group(function () {
+    Route::get('/', 'TestController@index');
+    Route::get('/realtime', 'TestController@realtime');
+});
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
