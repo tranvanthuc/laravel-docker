@@ -1,33 +1,40 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 class Firebase {
   constructor() {
-    this.init();
+    this.init()
   }
 
   init() {
-    this.config();
-    this.listen();
+    this.config()
+    this.listen()
   }
 
   config() {
-    const config = $('#config');
-    const configFirebase = {
-      apiKey: config.data('firebaseApiKey'),
-      authDomain: config.data('firebaseProjectId') + ".firebaseapp.com",
-      databaseURL: config.data('firebaseDatabaseUrl'),
-      projectId: config.data('firebaseProjectId'),
-      storageBucket: config.data('firebaseBucket'),
-      messagingSenderId: "" +config.data('firebaseSenderId'),
-    };
+    const config = $('#config')
+    // const configFirebase = {
+    //   apiKey: config.data('firebaseApiKey'),
+    //   authDomain: config.data('firebaseProjectId') + ".firebaseapp.com",
+    //   databaseURL: config.data('firebaseDatabaseUrl'),
+    //   projectId: config.data('firebaseProjectId'),
+    //   storageBucket: config.data('firebaseBucket'),
+    //   messagingSenderId: "" +config.data('firebaseSenderId'),
+    // };
     try {
-      console.log(configFirebase);
-      firebase.initializeApp(configFirebase);
+      const configFirebase = {
+        apiKey: "AIzaSyBfEQBNWYykyhecmxcdneKUa2bKsljEjbk",
+        authDomain: "fir-demo-7d357.firebaseapp.com",
+        databaseURL: "https://fir-demo-7d357.firebaseio.com",
+        projectId: "fir-demo-7d357",
+        storageBucket: "fir-demo-7d357.appspot.com",
+        messagingSenderId: "51341052467"
+      }
+      firebase.initializeApp(configFirebase)
 
-      this.database = firebase.database();
-      this.messaging = firebase.messaging();
-      this.messaging.usePublicVapidKey(config.data('firebasePublicKey'));
-      this.firestore = firebase.firestore();
+      this.database = firebase.database()
+      this.messaging = firebase.messaging()
+      this.messaging.usePublicVapidKey('BMRNtXh908y6yXIz2yr-qs7bWm26Jn6Q7aUP5ummPPEhYUXv0wHmafkZrYfmYqhYZpTVKJK2-RNeD9gpfwrsSso')
+      this.firestore = firebase.firestore()
 
     } catch (e) {
       console.log(e)
@@ -38,12 +45,12 @@ class Firebase {
   }
 
   listen() {
-    this.realTime();
-    this.message();
+    // this.realTime();
+    this.message()
   }
 
-  async realTime() {
-    console.log("Hello");
+   realTime() {
+    console.log("Hello")
 
     // const citiesRef = await this.firestore.collection("cities");
     //
@@ -102,7 +109,7 @@ class Firebase {
     // }, errorObject => {
     //   console.log(errorObject);
     // }).
-     const usersRef = this.firestore.collection('/users');
+    //  const usersRef = this.firestore.collection('/users');
     // usersRef.orderBy("first").limit(3).get()
     //  // usersRef.where("first", "==", "thuc").get()
     //    .then(function(querySnapshot) {
@@ -140,27 +147,28 @@ class Firebase {
     //  })
   }
 
+
   message() {
 
-    this.messaging.requestPermission().then(function() {
-      console.log('Notification permission granted.');
+    this.messaging.requestPermission().then(function () {
+      console.log('Notification permission granted.')
       // TODO(developer): Retrieve an Instance ID token for use with FCM.
       // ...
-    }).catch(function(err) {
-      console.log('Unable to get permission to notify.', err);
-    });
-    this.messaging.getToken().then(function(currentToken) {
+    }).catch(function (err) {
+      console.log('Unable to get permission to notify.', err)
+    })
+    this.messaging.getToken().then(function (currentToken) {
       if (currentToken) {
         console.log(currentToken)
       } else {
         // Show permission request.
-        console.log('No Instance ID token available. Request permission to generate one.');
+        console.log('No Instance ID token available. Request permission to generate one.')
         // Show permission UI.
       }
-    }).catch(function(err) {
-      console.log('An error occurred while retrieving token. ', err);
-    });
+    }).catch(function (err) {
+      console.log('An error occurred while retrieving token. ', err)
+    })
   }
 }
 
-new Firebase();
+new Firebase()

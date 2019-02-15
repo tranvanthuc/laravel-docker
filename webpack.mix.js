@@ -22,6 +22,6 @@ mix.autoload({
 });
 
 mix.js('resources/js/app.js', 'public/js')
-  .js('resources/js/firebase.js', 'public/js')
+  .js('resources/js/firebase/messaging', 'public/js')
   .sass('resources/sass/app.scss', 'public/css');
 
