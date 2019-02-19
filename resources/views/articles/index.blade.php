@@ -16,5 +16,5 @@
 @endsection
 
 @section('bottom.js')
-    <script src="{{mix('js/firebase.js')}}"></script>
+    <script src="{{mix('js/messaging.js')}}"></script>
 @endsection

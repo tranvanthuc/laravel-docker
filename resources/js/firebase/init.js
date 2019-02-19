@@ -1,4 +1,7 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/database'
+import 'firebase/messaging'
 
 class Index {
   constructor() {
