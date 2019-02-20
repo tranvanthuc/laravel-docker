@@ -21,6 +21,7 @@ class Index {
       this.messaging = firebase.messaging()
       this.firestore = firebase.firestore()
       this.auth      = firebase.auth()
+      this.firebase  = firebase
 
       this.messaging.usePublicVapidKey('BMRNtXh908y6yXIz2yr-qs7bWm26Jn6Q7aUP5ummPPEhYUXv0wHmafkZrYfmYqhYZpTVKJK2-RNeD9gpfwrsSso')
 

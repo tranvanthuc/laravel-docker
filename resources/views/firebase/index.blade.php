@@ -15,8 +15,10 @@
         <button id="btnLogin" >Log in</button>
         <button id="btnSignUp" >Sign Up</button>
         <button id="btnLogOut" class="hide" >Log Out</button>
-        <button id="withFB">Log In with FaceBook</button>
-        <button id="withGithub">Log In with GitHub</button>
+        <button id="withFacebook">Log In with FaceBook</button>
+        <button id="withGoogle">Log In with Google</button>
+        <button id="withTwitter">Log In with Twitter</button>
+        <button id="withGithub">Log In with Github</button>
     </div>
 @endsection
 
