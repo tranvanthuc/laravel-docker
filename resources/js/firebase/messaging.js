@@ -1,7 +1,4 @@
 import InitFirebase from './init'
-import _ from "lodash"
-
-
 
 class Index extends InitFirebase {
   constructor() {
@@ -15,25 +12,19 @@ class Index extends InitFirebase {
   }
 
   config() {
-    this.element = {
-      btn: $('#btn')
-    }
   }
 
   listen() {
     this.sendMessage()
-    this.pushAllMessage()
-    this.test();
+    this.receieveMessage()
   }
 
-  test() {
-    console.log('test');
-    this.firestore.collection('tokens').get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        console.log(doc.data())
-      })
+  receieveMessage () {
+    this.messaging.onMessage(payload => {
+      console.log('Message received. ', payload);
     })
   }
+
 
   sendMessage() {
     const self = this
@@ -71,20 +62,6 @@ class Index extends InitFirebase {
       }
     }).catch(function (err) {
       console.log('An error occurred while retrieving token. ', err)
-    })
-  }
-
-  pushAllMessage() {
-    const self = this
-    self.element.btn.on('click', () => {
-      self.firestore.collection('posts')
-        .add({
-          title: "Hello " + Math.random(),
-          content: "Content"
-        })
-        .catch(function (error) {
-          console.log("Error getting documents: ", error)
-        })
     })
   }
 }

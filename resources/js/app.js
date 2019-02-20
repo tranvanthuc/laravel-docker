@@ -31,5 +31,3 @@ require("./bootstrap");
 //     el: '#app'
 // });
 import "./article";
-import "./notice";
-// import "./firebase"

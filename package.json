@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.5.22"
     },
     "dependencies": {
+        "faker": "^4.1.0",
         "firebase": "^5.8.2",
         "laravel-echo": "^1.5.2",
         "pusher-js": "^4.3.1"
