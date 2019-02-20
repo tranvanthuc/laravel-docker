@@ -25,13 +25,10 @@ class Index extends InitFirebase {
     })
   }
 
-
   sendMessage() {
     const self = this
     this.messaging.requestPermission().then(function () {
       console.log('Notification permission granted.')
-      // TODO(developer): Retrieve an Instance ID token for use with FCM.
-      // ...
     }).catch(function (err) {
       console.log('Unable to get permission to notify.', err)
     })
@@ -42,7 +39,6 @@ class Index extends InitFirebase {
           .where('token', "==", currentToken)
           .get()
           .then(function (querySnapshot) {
-
             if (querySnapshot.size === 0) {
               self.firestore.collection('tokens').add({
                 token: currentToken
@@ -56,9 +52,7 @@ class Index extends InitFirebase {
             }
           })
       } else {
-        // Show permission request.
         console.log('No Instance ID token available. Request permission to generate one.')
-        // Show permission UI.
       }
     }).catch(function (err) {
       console.log('An error occurred while retrieving token. ', err)
