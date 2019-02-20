@@ -1,6 +1,6 @@
-const faker = require('faker')
+const faker     = require('faker')
 const functions = require('firebase-functions')
-const admin = require('firebase-admin')
+const admin     = require('firebase-admin')
 
 admin.initializeApp()
 
@@ -17,9 +17,9 @@ exports.modifyUser = functions.firestore
 
       const payload = {
         notification: {
-          title: document.author + " have a new article",
-          body: faker.lorem.sentences(),
-          icon: faker.internet.avatar(),
+          title       : document.author + " have a new article",
+          body        : faker.lorem.sentences(),
+          icon        : faker.internet.avatar(),
           click_action: faker.internet.avatar()
         }
       }

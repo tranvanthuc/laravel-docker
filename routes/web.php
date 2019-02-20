@@ -20,13 +20,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('create', 'ArticleController@postCreate')->name('create.post');
     Route::get('edit/{id}', 'ArticleController@getEdit')->name('edit.get');
     Route::post('edit/{id}', 'ArticleController@postEdit')->name('edit.post');
-    Route::get('/messages', 'MessageController@post');
+
     Route::get('users', 'UsersController@index')->name('users');
     Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
     Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
     Route::get('/notifications', 'UsersController@notifications');
 });
 
+Route::get('/firebase', 'FirebaseController@index');
 Auth::routes();
 
 Route::prefix('/test')->group(function () {

@@ -19,9 +19,9 @@ class Index extends InitFirebase {
     this.receieveMessage()
   }
 
-  receieveMessage () {
+  receieveMessage() {
     this.messaging.onMessage(payload => {
-      console.log('Message received. ', payload);
+      console.log('Message received. ', payload)
     })
   }
 
@@ -36,21 +36,21 @@ class Index extends InitFirebase {
       if (currentToken) {
         console.log(currentToken)
         self.firestore.collection('tokens')
-          .where('token', "==", currentToken)
-          .get()
-          .then(function (querySnapshot) {
-            if (querySnapshot.size === 0) {
-              self.firestore.collection('tokens').add({
-                token: currentToken
-              })
-                .then(function (docRef) {
-                  console.log("Document written with ID: ", docRef.id)
+            .where('token', "==", currentToken)
+            .get()
+            .then(function (querySnapshot) {
+              if (querySnapshot.size === 0) {
+                self.firestore.collection('tokens').add({
+                  token: currentToken
                 })
-                .catch(function (error) {
-                  console.error("Error adding document: ", error)
-                })
-            }
-          })
+                    .then(function (docRef) {
+                      console.log("Document written with ID: ", docRef.id)
+                    })
+                    .catch(function (error) {
+                      console.error("Error adding document: ", error)
+                    })
+              }
+            })
       } else {
         console.log('No Instance ID token available. Request permission to generate one.')
       }

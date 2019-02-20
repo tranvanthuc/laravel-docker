@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -16,6 +16,6 @@
 @endsection
 
 @section('bottom.js')
-    <script src="{{mix('js/messaging.js')}}"></script>
-    <script src="{{mix('js/create-post.js')}}"></script>
+    <script src="{{mix('js/firebase/messaging.js')}}"></script>
+    <script src="{{mix('js/firebase/create-post.js')}}"></script>
 @endsection
