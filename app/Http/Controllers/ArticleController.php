@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Article;
+use App\Events\MessagePosted;
 use App\Repositories\ArticleRepository;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,15 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = $this->articleRepo->paginate(10);
-        return view('articles.index', compact('articles'));
+        //        $articles = $this->articleRepo->with('user')->paginate(10);
+        //        return view('articles.index', compact('articles'));
+        return redirect()->route('search');
     }
 
     public function search()
     {
+        $message = "Hello";
+        event(new MessagePosted(\Auth::user(), $message));
         $articles = $this->articleRepo->search();
         return view('articles.index', compact('articles'));
     }
@@ -37,7 +41,7 @@ class ArticleController extends Controller
     public function postCreate(Request $request)
     {
         $params            = $request->all();
-        $params['user_id'] = 1;
+        $params['user_id'] = auth()->id();
         $params['tags']    = explode(",", $request->input('tags'));
         $article           = $this->articleRepo->create($params);
         return redirect()->route('edit.get', ['id' => $article->id]);
@@ -51,7 +55,7 @@ class ArticleController extends Controller
 
     public function postEdit(Request $request, $id)
     {
-        $params         = $request->all();
+        $params = $request->all();
 
         // convert string to array
         $params['tags'] = explode(",", $request->input('tags'));

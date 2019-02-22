@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -19,9 +19,11 @@ mix.autoload({
     "jquery",
     "window.jquery"
   ]
-});
+})
 
 mix.js('resources/js/app.js', 'public/js')
-// mix.js('resources/js/article.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .js('resources/js/firebase/messaging', 'public/js/firebase')
+   .js('resources/js/firebase/create-post', 'public/js/firebase')
+   .js('resources/js/firebase/auth', 'public/js/firebase')
+   .sass('resources/sass/app.scss', 'public/css')
 

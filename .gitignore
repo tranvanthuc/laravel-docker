@@ -1,7 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
+/public/js
+/public/css
 /storage/*.key
+/storage/debugbar/*
 /vendor
 .env
 .phpunit.result.cache
@@ -13,3 +16,6 @@ yarn.lock
 _ide_helper.php
 composer.lock
 .idea/*
+.phpstorm.meta.php
+/storage/debugbar/*
+.firebase/*

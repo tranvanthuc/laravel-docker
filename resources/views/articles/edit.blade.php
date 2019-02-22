@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('layouts.app')
 
 @section('content')
     <form action={{route('edit.post', ['id' => $article->id])}} method="post">
