@@ -46,21 +46,18 @@ class ReIndexCommand extends Command
     {
         $this->info('Indexing all articles. Might take a while...');
 
-//        foreach (Article::all() as $model) {
-//            $this->search->index([
-//                'index' => $model->getSearchIndex(),
-//                'type'  => $model->getSearchType(),
-//                'id'    => $model->id,
-//                'body'  => $model->toSearchArray(),
-//            ]);
-//
-//            // PHPUnit-style feedback
-//            $this->output->write('.' . $model->id);
-//        }
+        foreach (Article::all() as $model) {
+            $this->search->index([
+                'index' => $model->getSearchIndex(),
+                'type'  => $model->getSearchType(),
+                'id'    => $model->id,
+                'body'  => $model->toSearchArray(),
+            ]);
 
-        $message = "Hello";
-        $user = User::find(1);
-        event(new MessagePosted($user, $message));
+            // PHPUnit-style feedback
+            $this->output->write('.' . $model->id);
+        }
+
         $this->info("nDone!");
     }
 }
