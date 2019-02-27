@@ -7,6 +7,7 @@ use App\Repositories\ArticleRepositoryEloquent;
 use App\Repositories\ElasticSearchArticleRepositoryEloquent;
 use App\Repositories\UserRepository;
 use App\Repositories\UserRepositoryEloquent;
+use Aws\ElasticsearchService\ElasticsearchServiceClient as ElasticsearchServiceClient;
 use Illuminate\Support\ServiceProvider;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
