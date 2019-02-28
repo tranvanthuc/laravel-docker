@@ -27,8 +27,6 @@ class ArticleController extends Controller
 
     public function search()
     {
-        $message = "Hello";
-        event(new MessagePosted(\Auth::user(), $message));
         $articles = $this->articleRepo->search();
         return view('articles.index', compact('articles'));
     }

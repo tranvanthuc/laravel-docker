@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Article;
+use Elasticsearch;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Elasticsearch\Client;
 use \Illuminate\Container\Container;
@@ -62,7 +63,7 @@ class ElasticSearchArticleRepositoryEloquent extends BaseRepository implements A
                 "order" => "desc"
             ]
         ];
-        $items        = $this->search->search([
+        $items        = Elasticsearch::search([
             'size'  => $size,
             'from'  => $from,
             'index' => $this->makeModel()->getSearchIndex(),

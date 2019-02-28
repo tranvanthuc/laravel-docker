@@ -44,9 +44,10 @@ class RepositoryProvider extends ServiceProvider
             );
         });
 
-        $this->bindSearchClient();
+//        $this->bindSearchClient();
         // bind repository
         $this->app->singleton(UserRepository::class, UserRepositoryEloquent::class);
+//        $this->app->singleton(ArticleRepository::class, ArticleRepositoryEloquent::class);
 
     }
 
