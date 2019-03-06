@@ -41,9 +41,12 @@ class ArticleRepositoryEloquent extends BaseRepository implements ArticleReposit
 
     public function search($params = [])
     {
-        $query = $params['query'];
+        $query = $params['query'] ?? "";
+        $size  = $params['size'] ?? 10;
         return $this->model->where('body', 'like', "%{$query}%")
             ->orWhere('title', 'like', "%{$query}%")
+            ->take($size)
+            ->with('user')
             ->get();
     }
 }

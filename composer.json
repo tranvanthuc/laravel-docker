@@ -12,6 +12,7 @@
         "ext-json": "^1.6",
         "aws/aws-sdk-php": "^3.87",
         "barryvdh/laravel-ide-helper": "^2.5",
+        "cviebrock/laravel-elasticsearch": "^3.4",
         "elasticsearch/elasticsearch": "^6.1",
         "fideloper/proxy": "^4.0",
         "kreait/firebase-php": "^4.19",

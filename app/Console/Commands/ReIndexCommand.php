@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Entities\Article;
 use App\Entities\User;
 use App\Events\MessagePosted;
+use Elasticsearch;
 use Elasticsearch\Client;
 use Illuminate\Console\Command;
 
@@ -34,7 +35,6 @@ class ReIndexCommand extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->search = app(Client::class);
     }
 
     /**
@@ -47,7 +47,7 @@ class ReIndexCommand extends Command
         $this->info('Indexing all articles. Might take a while...');
 
         foreach (Article::all() as $model) {
-            $this->search->index([
+            Elasticsearch::index([
                 'index' => $model->getSearchIndex(),
                 'type'  => $model->getSearchType(),
                 'id'    => $model->id,
