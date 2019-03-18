@@ -35,6 +35,11 @@ Route::prefix('/test')->group(function () {
     Route::get('/realtime', 'TestController@realtime');
 });
 
+Route::prefix('s3')->group(function () {
+   Route::get('/', 'S3Controller@index')->name('s3.index');
+   Route::post('/upload', 'S3Controller@upload')->name('s3.upload');
+   Route::post('/get', 'S3Controller@upload')->name('s3.get');
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');
