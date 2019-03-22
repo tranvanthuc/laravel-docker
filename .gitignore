@@ -19,3 +19,7 @@ composer.lock
 .phpstorm.meta.php
 /storage/debugbar/*
 .firebase/*
+.dep/
+release
+releases/*
+shared/*

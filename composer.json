@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "ext-json": "^1.6",
+        "ext-json": "*",
         "aws/aws-sdk-php": "^3.89",
         "barryvdh/laravel-ide-helper": "^2.6",
         "fideloper/proxy": "^4.0",
